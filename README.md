@@ -15,7 +15,7 @@ Supports PostgreSQL and MySQL
 
 ## Installation
 
-### For Postgresql
+### For PostgreSQL
 
 ```sh
 curl https://raw.github.com/ankane/groupdate.sql/master/postgresql.sql | psql db_name
