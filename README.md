@@ -13,6 +13,23 @@ The simplest way to group by:
 
 Supports PostgreSQL and MySQL
 
+## Usage
+
+```sql
+SELECT gd_day(created_at, 'America/Los_Angeles') AS day, COUNT(*) FROM users GROUP BY day;
+```
+
+returns
+
+```sh
+          day           | count
+------------------------+-------
+ 2013-04-11 07:00:00+00 |   145
+ 2013-04-12 07:00:00+00 |    65
+ 2013-04-13 07:00:00+00 |   293
+(3 rows)
+```
+
 ## Installation
 
 ### For PostgreSQL
