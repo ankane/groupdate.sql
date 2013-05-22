@@ -19,8 +19,8 @@ Group by day
 
 ```sql
 SELECT gd_day(created_at, 'America/Los_Angeles') AS day, COUNT(*)
-  FROM users
-  GROUP BY day;
+    FROM users
+    GROUP BY day;
 ```
 
 returns
@@ -37,8 +37,8 @@ Group by day of week
 
 ```sql
 SELECT gd_day_of_week(created_at, 'America/Los_Angeles') AS day_of_week, COUNT(*)
-  FROM orders
-  GROUP BY day_of_week;
+    FROM orders
+    GROUP BY day_of_week;
 ```
 
 returns
@@ -79,7 +79,7 @@ mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
 
 ## Complete list
 
-gd_
+All functions are prefixed with `gd_`
 
 - second
 - minute
