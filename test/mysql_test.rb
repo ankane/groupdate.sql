@@ -18,6 +18,8 @@ class TestMysql < Minitest::Test
     # skip if no time zone
     if time_zone
       assert_sql expected, "SELECT #{function}('#{time_str}', 'America/Los_Angeles')"
+    else
+      skip "MySQL does not support function overloading"
     end
   end
 end
