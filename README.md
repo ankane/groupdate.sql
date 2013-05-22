@@ -55,19 +55,28 @@ returns
            6 |   189
 ```
 
+**Note:** Weeks start on Sunday.
+
 ## Installation
 
-### For PostgreSQL
+#### For PostgreSQL
 
 ```sh
 curl https://raw.github.com/ankane/groupdate.sql/master/postgresql.sql | psql db_name
 ```
 
-### For MySQL
+#### For MySQL
 
 ```sh
 curl https://raw.github.com/ankane/groupdate.sql/master/mysql.sql | mysql -u root db_name
 ```
+
+[Time zone support](http://dev.mysql.com/doc/refman/5.6/en/time-zone-support.html) must be installed on the server.
+
+```sh
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+```
+
 ## Complete list
 
 gd_
