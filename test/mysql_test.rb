@@ -8,9 +8,7 @@ class TestMysql < Minitest::Test
   def conn
     @@conn ||=
       begin
-        conn = Mysql2::Client.new(:host => "localhost", :username => "root", database: "groupdate_test")
-        conn.query "SET time_zone = 'America/New_York'"
-        conn
+        Mysql2::Client.new(:host => "localhost", :username => "root", database: "groupdate_test", database_timezone: :utc)
       end
   end
 

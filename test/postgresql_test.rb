@@ -8,7 +8,7 @@ class TestPostgresql < Minitest::Test
       begin
         conn = PG.connect(:dbname => "groupdate_test")
         conn.query File.read("postgresql.sql")
-        conn.query "SET TIMEZONE TO 'America/New_York'"
+        conn.query "SET TIMEZONE TO 'Etc/UTC'"
         conn
       end
   end

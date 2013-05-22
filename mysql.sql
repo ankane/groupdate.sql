@@ -7,7 +7,7 @@ DELIMITER $$
 CREATE FUNCTION gd_second(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS TIMESTAMP
 BEGIN
-  RETURN DATE_FORMAT(CONVERT_TZ(ts, @@session.time_zone, time_zone), '%Y-%m-%d %H:%i:%S');
+  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-%d %H:%i:%S'), time_zone, '+00:00');
 END;
 $$
 DELIMITER ;
@@ -20,7 +20,7 @@ DELIMITER $$
 CREATE FUNCTION gd_minute(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS TIMESTAMP
 BEGIN
-  RETURN DATE_FORMAT(CONVERT_TZ(ts, @@session.time_zone, time_zone), '%Y-%m-%d %H:%i:00');
+  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-%d %H:%i:00'), time_zone, '+00:00');
 END;
 $$
 DELIMITER ;
@@ -33,7 +33,7 @@ DELIMITER $$
 CREATE FUNCTION gd_hour(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS TIMESTAMP
 BEGIN
-  RETURN DATE_FORMAT(CONVERT_TZ(ts, @@session.time_zone, time_zone), '%Y-%m-%d %H:00:00');
+  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-%d %H:00:00'), time_zone, '+00:00');
 END;
 $$
 DELIMITER ;
@@ -46,7 +46,7 @@ DELIMITER $$
 CREATE FUNCTION gd_day(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS TIMESTAMP
 BEGIN
-  RETURN DATE_FORMAT(CONVERT_TZ(ts, @@session.time_zone, time_zone), '%Y-%m-%d 00:00:00');
+  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-%d 00:00:00'), time_zone, '+00:00');
 END;
 $$
 DELIMITER ;
@@ -59,7 +59,7 @@ DELIMITER $$
 CREATE FUNCTION gd_week(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS TIMESTAMP
 BEGIN
-  RETURN DATE_FORMAT(CONVERT_TZ(DATE_SUB(ts, INTERVAL (DAYOFWEEK(CONVERT_TZ(ts, @@session.time_zone, time_zone)) - 1) DAY), @@session.time_zone, time_zone), '%Y-%m-%d 00:00:00');
+  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(ts, INTERVAL (DAYOFWEEK(CONVERT_TZ(ts, '+00:00', time_zone)) - 1) DAY), '+00:00', time_zone), '%Y-%m-%d 00:00:00'), time_zone, '+00:00');
 END;
 $$
 DELIMITER ;
@@ -72,7 +72,7 @@ DELIMITER $$
 CREATE FUNCTION gd_month(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS TIMESTAMP
 BEGIN
-  RETURN DATE_FORMAT(CONVERT_TZ(ts, @@session.time_zone, time_zone), '%Y-%m-01 00:00:00');
+  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-01 00:00:00'), time_zone, '+00:00');
 END;
 $$
 DELIMITER ;
@@ -85,7 +85,7 @@ DELIMITER $$
 CREATE FUNCTION gd_year(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS TIMESTAMP
 BEGIN
-  RETURN DATE_FORMAT(CONVERT_TZ(ts, @@session.time_zone, time_zone), '%Y-01-01 00:00:00');
+  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-01-01 00:00:00'), time_zone, '+00:00');
 END;
 $$
 DELIMITER ;
@@ -98,7 +98,7 @@ DELIMITER $$
 CREATE FUNCTION gd_hour_of_day(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS INT
 BEGIN
-  RETURN EXTRACT(HOUR FROM CONVERT_TZ(ts, @@session.time_zone, time_zone));
+  RETURN EXTRACT(HOUR FROM CONVERT_TZ(ts, '+00:00', time_zone));
 END;
 $$
 DELIMITER ;
@@ -111,7 +111,7 @@ DELIMITER $$
 CREATE FUNCTION gd_day_of_week(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS INT
 BEGIN
-  RETURN DAYOFWEEK(CONVERT_TZ(ts, @@session.time_zone, time_zone)) - 1;
+  RETURN DAYOFWEEK(CONVERT_TZ(ts, '+00:00', time_zone)) - 1;
 END;
 $$
 DELIMITER ;
