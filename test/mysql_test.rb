@@ -1,27 +1,23 @@
 require "test_helper"
 
-# import files
-$conn = Mysql2::Client.new(:host => "localhost", :username => "root", database: "groupdate_test")
+# note: have to import manually mysql.sql
 
-# have to import manually mysql.sql
+class TestMysql < Minitest::Test
+  include TestGroupdate
 
-$conn.query "SET time_zone = 'America/New_York'"
-
-def assert_sql(expected, sql)
-  assert_equal [[expected]], $conn.query(sql).map(&:values)
-end
-
-def assert_result(function, expected, time_str, time_zone = false)
-  # skip if no time zone
-  if time_zone
-    assert_sql expected, "SELECT #{function}('#{time_str}', 'America/Los_Angeles')"
+  def conn
+    @@conn ||=
+      begin
+        conn = Mysql2::Client.new(:host => "localhost", :username => "root", database: "groupdate_test")
+        conn.query "SET time_zone = 'America/New_York'"
+        conn
+      end
   end
-end
 
-def assert_result_time(function, expected, time_str, time_zone = false)
-  assert_result function, Time.parse(expected), time_str, time_zone
-end
-
-describe "mysql.sql" do
-  include Tests
+  def assert_result(function, expected, time_str, time_zone = false)
+    # skip if no time zone
+    if time_zone
+      assert_sql expected, "SELECT #{function}('#{time_str}', 'America/Los_Angeles')"
+    end
+  end
 end
