@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.0.2)
+    mysql2 (0.3.11)
+    pg (0.15.1)
+    pg_typecast (0.1.3)
+      pg (>= 0.9.0)
+    rake (10.0.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest
+  mysql2
+  pg
+  pg_typecast
+  rake
