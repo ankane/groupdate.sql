@@ -15,7 +15,7 @@ Supports PostgreSQL and MySQL
 
 ## Usage
 
-Group by day
+#### Group by day
 
 ```sql
 SELECT gd_day(created_at, 'America/Los_Angeles') AS day, COUNT(*)
@@ -25,7 +25,7 @@ SELECT gd_day(created_at, 'America/Los_Angeles') AS day, COUNT(*)
 
 returns
 
-```sh
+```
           day           | count
 ------------------------+-------
  2013-04-11 07:00:00+00 |   145
@@ -33,10 +33,28 @@ returns
  2013-04-13 07:00:00+00 |   293
 ```
 
-Group by day of week
+#### Group by week
 
 ```sql
-SELECT gd_day_of_week(created_at, 'America/Los_Angeles') AS day_of_week, COUNT(*)
+SELECT gd_week(created_at, 'America/Chicago') AS week, COUNT(*)
+    FROM users
+    GROUP BY week;
+```
+
+returns
+
+```
+          week          | count
+------------------------+-------
+ 2013-05-05 05:00:00+00 |  1327
+ 2013-05-12 05:00:00+00 |  3432
+ 2013-05-19 05:00:00+00 |   673
+``
+
+#### Group by day of week
+
+```sql
+SELECT gd_day_of_week(created_at, 'America/New_York') AS day_of_week, COUNT(*)
     FROM orders
     GROUP BY day_of_week;
 ```
@@ -56,6 +74,8 @@ returns
 ```
 
 **Note:** Weeks start on Sunday.
+
+A list of time zone values can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
 ## Installation
 
@@ -79,7 +99,7 @@ mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
 
 ## Complete list
 
-All functions are prefixed with `gd_`
+All functions are prefixed with `gd_` to prevent conflicts with MySQL functions.
 
 - second
 - minute
