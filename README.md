@@ -71,7 +71,7 @@ SELECT gd_day_of_week(created_at, 'America/New_York') AS day_of_week, COUNT(*)
 
 **Note:** Weeks start on Sunday.
 
-A list of time zones can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+#### Language / Frameworks
 
 ##### Ruby on Rails
 
@@ -118,6 +118,8 @@ All functions are prefixed with `gd_` to prevent conflicts with MySQL functions.
 - year
 - hour_of_day
 - day_of_week
+
+A list of time zones can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
 ## Contributing
 
