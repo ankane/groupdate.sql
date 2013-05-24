@@ -11,9 +11,17 @@ The simplest way to group by:
 
 :tada: Time zones supported!! **the best part**
 
+:earth_americas: Use it with any programming language **the other best part**
+
 Supports PostgreSQL and MySQL
 
 ## Usage
+
+Groupdate.sql creates SQL functions, which are stored by the database.
+
+You can use these functions with any ORM (or without one).
+
+##### SQL
 
 Group by day
 
@@ -21,11 +29,7 @@ Group by day
 SELECT gd_day(created_at, 'America/Los_Angeles') AS day, COUNT(*)
     FROM users
     GROUP BY day;
-```
-
-returns
-
-```
+-- result
           day           | count
 ------------------------+-------
  2013-04-11 07:00:00+00 |   145
@@ -39,11 +43,7 @@ Group by week
 SELECT gd_week(created_at, 'America/Chicago') AS week, COUNT(*)
     FROM users
     GROUP BY week;
-```
-
-returns
-
-```
+-- result
           week          | count
 ------------------------+-------
  2013-05-05 05:00:00+00 |  1327
@@ -57,11 +57,7 @@ Group by day of week
 SELECT gd_day_of_week(created_at, 'America/New_York') AS day_of_week, COUNT(*)
     FROM orders
     GROUP BY day_of_week;
-```
-
-returns
-
-```
+-- result
  day_of_week | count
 -------------+-------
            0 |   167
@@ -75,7 +71,19 @@ returns
 
 **Note:** Weeks start on Sunday.
 
-A list of time zone values can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+A list of time zones can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+##### Ruby on Rails
+
+```ruby
+User.group("gd_day(created_at)").count
+```
+
+##### Django
+
+```python
+# TODO
+```
 
 ## Installation
 
