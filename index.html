@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Groupdate.sql by ankane</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Groupdate.sql</h1>
+        <p>The simplest way to group temporal data</p>
+
+        <p class="view"><a href="https://github.com/ankane/groupdate.sql">View the Project on GitHub <small>ankane/groupdate.sql</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ankane/groupdate.sql/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ankane/groupdate.sql/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ankane/groupdate.sql">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>The simplest way to group by:</p>
+
+<ul>
+<li>day</li>
+<li>week</li>
+<li>month</li>
+<li>day of the week</li>
+<li>hour of the day</li>
+<li>and more (complete list at bottom)</li>
+</ul><p><img class="emoji" title=":tada:" alt=":tada:" src="https://a248.e.akamai.net/assets.github.com/images/icons/emoji/tada.png" height="20" width="20" align="absmiddle"> Time zones supported!! <strong>the best part</strong></p>
+
+<p><img class="emoji" title=":earth_americas:" alt=":earth_americas:" src="https://a248.e.akamai.net/assets.github.com/images/icons/emoji/earth_americas.png" height="20" width="20" align="absmiddle"> Use it with any programming language <strong>the other best part</strong></p>
+
+<p>Supports PostgreSQL and MySQL</p>
+
+<h2>Usage</h2>
+
+<p>Groupdate.sql creates SQL functions, which are stored by the database.</p>
+
+<p>You can use these functions with any ORM (or without one).</p>
+
+<h5>SQL</h5>
+
+<p>Group by day</p>
+
+<div class="highlight"><pre><span class="k">SELECT</span> <span class="n">gd_day</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/Los_Angeles'</span><span class="p">)</span> <span class="k">AS</span> <span class="k">day</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+    <span class="k">FROM</span> <span class="n">users</span>
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">day</span><span class="p">;</span>
+<span class="c1">-- result</span>
+          <span class="k">day</span>           <span class="o">|</span> <span class="k">count</span>
+<span class="c1">------------------------+-------</span>
+ <span class="mi">2013</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">11</span> <span class="mi">07</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span> <span class="o">|</span>   <span class="mi">145</span>
+ <span class="mi">2013</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">12</span> <span class="mi">07</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span> <span class="o">|</span>    <span class="mi">65</span>
+ <span class="mi">2013</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">13</span> <span class="mi">07</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span> <span class="o">|</span>   <span class="mi">293</span>
+</pre></div>
+
+<p>Group by week</p>
+
+<div class="highlight"><pre><span class="k">SELECT</span> <span class="n">gd_week</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/Chicago'</span><span class="p">)</span> <span class="k">AS</span> <span class="n">week</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+    <span class="k">FROM</span> <span class="n">users</span>
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">week</span><span class="p">;</span>
+<span class="c1">-- result</span>
+          <span class="n">week</span>          <span class="o">|</span> <span class="k">count</span>
+<span class="c1">------------------------+-------</span>
+ <span class="mi">2013</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">05</span> <span class="mi">05</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span> <span class="o">|</span>  <span class="mi">1327</span>
+ <span class="mi">2013</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">12</span> <span class="mi">05</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span> <span class="o">|</span>  <span class="mi">3432</span>
+ <span class="mi">2013</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">19</span> <span class="mi">05</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="o">+</span><span class="mi">00</span> <span class="o">|</span>   <span class="mi">673</span>
+</pre></div>
+
+<p>Group by day of week</p>
+
+<div class="highlight"><pre><span class="k">SELECT</span> <span class="n">gd_day_of_week</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/New_York'</span><span class="p">)</span> <span class="k">AS</span> <span class="n">day_of_week</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+    <span class="k">FROM</span> <span class="n">orders</span>
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">day_of_week</span><span class="p">;</span>
+<span class="c1">-- result</span>
+ <span class="n">day_of_week</span> <span class="o">|</span> <span class="k">count</span>
+<span class="c1">-------------+-------</span>
+           <span class="mi">0</span> <span class="o">|</span>   <span class="mi">167</span>
+           <span class="mi">1</span> <span class="o">|</span>   <span class="mi">273</span>
+           <span class="mi">2</span> <span class="o">|</span>   <span class="mi">439</span>
+           <span class="mi">3</span> <span class="o">|</span>   <span class="mi">285</span>
+           <span class="mi">4</span> <span class="o">|</span>   <span class="mi">318</span>
+           <span class="mi">5</span> <span class="o">|</span>   <span class="mi">123</span>
+           <span class="mi">6</span> <span class="o">|</span>   <span class="mi">189</span>
+</pre></div>
+
+<p><strong>Note:</strong> Weeks start on Sunday.</p>
+
+<h4>Language / Frameworks</h4>
+
+<h5>Ruby on Rails</h5>
+
+<div class="highlight"><pre><span class="no">User</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"gd_day(created_at)"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span>
+</pre></div>
+
+<h5>Django</h5>
+
+<div class="highlight"><pre><span class="c"># TODO</span>
+</pre></div>
+
+<h2>Installation</h2>
+
+<h4>For PostgreSQL</h4>
+
+<div class="highlight"><pre>curl https://raw.github.com/ankane/groupdate.sql/master/postgresql.sql | psql db_name
+</pre></div>
+
+<h4>For MySQL</h4>
+
+<div class="highlight"><pre>curl https://raw.github.com/ankane/groupdate.sql/master/mysql.sql | mysql -u root db_name
+</pre></div>
+
+<p><a href="http://dev.mysql.com/doc/refman/5.6/en/time-zone-support.html">Time zone support</a> must be installed on the server.</p>
+
+<div class="highlight"><pre>mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+</pre></div>
+
+<h2>Complete list</h2>
+
+<p>All functions are prefixed with <code>gd_</code> to prevent conflicts with MySQL functions.</p>
+
+<ul>
+<li>second</li>
+<li>minute</li>
+<li>hour</li>
+<li>day</li>
+<li>week</li>
+<li>month</li>
+<li>year</li>
+<li>hour_of_day</li>
+<li>day_of_week</li>
+</ul><p>A list of time zones can be found <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">here</a></p>
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ankane">ankane</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-39027070-5");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
