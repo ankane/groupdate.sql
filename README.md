@@ -21,7 +21,7 @@ Groupdate.sql creates SQL functions, which are stored by the database.
 
 You can use these functions with any ORM (or without one).
 
-##### SQL
+#### SQL
 
 Group by day
 
