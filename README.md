@@ -15,7 +15,7 @@ Supports PostgreSQL and MySQL
 
 ## Usage
 
-#### Group by day
+Group by day
 
 ```sql
 SELECT gd_day(created_at, 'America/Los_Angeles') AS day, COUNT(*)
@@ -33,7 +33,7 @@ returns
  2013-04-13 07:00:00+00 |   293
 ```
 
-#### Group by week
+Group by week
 
 ```sql
 SELECT gd_week(created_at, 'America/Chicago') AS week, COUNT(*)
@@ -49,9 +49,9 @@ returns
  2013-05-05 05:00:00+00 |  1327
  2013-05-12 05:00:00+00 |  3432
  2013-05-19 05:00:00+00 |   673
-``
+```
 
-#### Group by day of week
+Group by day of week
 
 ```sql
 SELECT gd_day_of_week(created_at, 'America/New_York') AS day_of_week, COUNT(*)
