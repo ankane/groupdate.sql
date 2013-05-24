@@ -73,13 +73,13 @@ SELECT gd_day_of_week(created_at, 'America/New_York') AS day_of_week, COUNT(*)
 
 #### Language / Frameworks
 
-##### Ruby on Rails
+Ruby on Rails
 
 ```ruby
 User.group("gd_day(created_at)").count
 ```
 
-##### Django
+Django
 
 ```python
 # TODO
