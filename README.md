@@ -27,8 +27,7 @@ Group by day
 
 ```sql
 SELECT gd_day(created_at, 'America/Los_Angeles') AS day, COUNT(*)
-    FROM users
-    GROUP BY day;
+  FROM users GROUP BY day;
 -- result
           day           | count
 ------------------------+-------
@@ -41,8 +40,7 @@ Group by week
 
 ```sql
 SELECT gd_week(created_at, 'America/Chicago') AS week, COUNT(*)
-    FROM users
-    GROUP BY week;
+  FROM users GROUP BY week;
 -- result
           week          | count
 ------------------------+-------
@@ -55,8 +53,7 @@ Group by day of week
 
 ```sql
 SELECT gd_day_of_week(created_at, 'America/New_York') AS day_of_week, COUNT(*)
-    FROM orders
-    GROUP BY day_of_week;
+  FROM orders GROUP BY day_of_week;
 -- result
  day_of_week | count
 -------------+-------
