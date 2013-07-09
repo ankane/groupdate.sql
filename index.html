@@ -62,8 +62,7 @@
 <p>Group by day</p>
 
 <div class="highlight"><pre><span class="k">SELECT</span> <span class="n">gd_day</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/Los_Angeles'</span><span class="p">)</span> <span class="k">AS</span> <span class="k">day</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-    <span class="k">FROM</span> <span class="n">users</span>
-    <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">day</span><span class="p">;</span>
+  <span class="k">FROM</span> <span class="n">users</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">day</span><span class="p">;</span>
 <span class="c1">-- result</span>
           <span class="k">day</span>           <span class="o">|</span> <span class="k">count</span>
 <span class="c1">------------------------+-------</span>
@@ -75,8 +74,7 @@
 <p>Group by week</p>
 
 <div class="highlight"><pre><span class="k">SELECT</span> <span class="n">gd_week</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/Chicago'</span><span class="p">)</span> <span class="k">AS</span> <span class="n">week</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-    <span class="k">FROM</span> <span class="n">users</span>
-    <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">week</span><span class="p">;</span>
+  <span class="k">FROM</span> <span class="n">users</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">week</span><span class="p">;</span>
 <span class="c1">-- result</span>
           <span class="n">week</span>          <span class="o">|</span> <span class="k">count</span>
 <span class="c1">------------------------+-------</span>
@@ -88,8 +86,7 @@
 <p>Group by day of week</p>
 
 <div class="highlight"><pre><span class="k">SELECT</span> <span class="n">gd_day_of_week</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/New_York'</span><span class="p">)</span> <span class="k">AS</span> <span class="n">day_of_week</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-    <span class="k">FROM</span> <span class="n">orders</span>
-    <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">day_of_week</span><span class="p">;</span>
+  <span class="k">FROM</span> <span class="n">orders</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">day_of_week</span><span class="p">;</span>
 <span class="c1">-- result</span>
  <span class="n">day_of_week</span> <span class="o">|</span> <span class="k">count</span>
 <span class="c1">-------------+-------</span>
