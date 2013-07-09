@@ -99,7 +99,7 @@ curl https://raw.github.com/ankane/groupdate.sql/master/mysql.sql | mysql -u roo
 [Time zone support](http://dev.mysql.com/doc/refman/5.6/en/time-zone-support.html) must be installed on the server.
 
 ```sh
-mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql mysql
 ```
 
 ## Complete list
