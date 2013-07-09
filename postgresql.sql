@@ -1,3 +1,12 @@
+-- version
+
+CREATE OR REPLACE FUNCTION gd_version()
+  RETURNS text AS
+$$
+  SELECT '1.0.0'::text;
+$$
+  LANGUAGE SQL;
+
 -- second
 
 CREATE OR REPLACE FUNCTION gd_second(timestamptz)

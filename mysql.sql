@@ -1,5 +1,17 @@
 START TRANSACTION;
 
+-- version
+
+DROP FUNCTION IF EXISTS gd_version;
+DELIMITER $$
+CREATE FUNCTION gd_version()
+  RETURNS VARCHAR(255)
+BEGIN
+  RETURN '1.0.0';
+END;
+$$
+DELIMITER ;
+
 -- second
 
 DROP FUNCTION IF EXISTS gd_second;
