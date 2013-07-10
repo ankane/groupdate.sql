@@ -118,6 +118,20 @@ All functions are prefixed with `gd_` to prevent conflicts with MySQL functions.
 
 A list of time zones can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
+## Uninstall
+
+#### For PostgreSQL
+
+```sh
+curl https://raw.github.com/ankane/groupdate.sql/master/uninstall_postgresql.sql | psql db_name
+```
+
+#### For MySQL
+
+```sh
+curl https://raw.github.com/ankane/groupdate.sql/master/uninstall_mysql.sql | mysql db_name
+```
+
 ## Contributing
 
 1. Fork it
