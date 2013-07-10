@@ -14,7 +14,7 @@ CREATE OR REPLACE FUNCTION gd_second(timestamptz)
 $$
   SELECT DATE_TRUNC('second', $1)::timestamptz;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_second(timestamp)
@@ -22,7 +22,7 @@ CREATE OR REPLACE FUNCTION gd_second(timestamp)
 $$
   SELECT gd_second($1::timestamptz);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- minute
@@ -32,7 +32,7 @@ CREATE OR REPLACE FUNCTION gd_minute(timestamptz)
 $$
   SELECT DATE_TRUNC('minute', $1)::timestamptz;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_minute(timestamp)
@@ -40,7 +40,7 @@ CREATE OR REPLACE FUNCTION gd_minute(timestamp)
 $$
   SELECT gd_minute($1::timestamptz);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- hour
@@ -50,7 +50,7 @@ CREATE OR REPLACE FUNCTION gd_hour(timestamptz)
 $$
   SELECT DATE_TRUNC('hour', $1)::timestamptz;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_hour(timestamp)
@@ -58,7 +58,7 @@ CREATE OR REPLACE FUNCTION gd_hour(timestamp)
 $$
   SELECT gd_hour($1::timestamptz);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- day
@@ -68,7 +68,7 @@ CREATE OR REPLACE FUNCTION gd_day(timestamptz)
 $$
   SELECT DATE_TRUNC('day', $1)::timestamptz;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_day(timestamp)
@@ -76,7 +76,7 @@ CREATE OR REPLACE FUNCTION gd_day(timestamp)
 $$
   SELECT gd_day($1::timestamptz);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- day w/ time zone
@@ -86,7 +86,7 @@ CREATE OR REPLACE FUNCTION gd_day(timestamptz, text)
 $$
   SELECT DATE_TRUNC('day', $1 AT TIME ZONE $2) AT TIME ZONE $2;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_day(timestamp, text)
@@ -94,7 +94,7 @@ CREATE OR REPLACE FUNCTION gd_day(timestamp, text)
 $$
   SELECT gd_day($1::timestamptz, $2);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- week
@@ -104,7 +104,7 @@ CREATE OR REPLACE FUNCTION gd_week(timestamptz)
 $$
   SELECT DATE_TRUNC('week', ($1 + INTERVAL '1 day')) - INTERVAL '1 day';
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_week(timestamp)
@@ -112,7 +112,7 @@ CREATE OR REPLACE FUNCTION gd_week(timestamp)
 $$
   SELECT gd_week($1::timestamptz);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- week w/ time zone
@@ -122,7 +122,7 @@ CREATE OR REPLACE FUNCTION gd_week(timestamptz, text)
 $$
   SELECT (DATE_TRUNC('week', ($1 + INTERVAL '1 day') AT TIME ZONE $2) - INTERVAL '1 day') AT TIME ZONE $2;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_week(timestamp, text)
@@ -130,7 +130,7 @@ CREATE OR REPLACE FUNCTION gd_week(timestamp, text)
 $$
   SELECT gd_week($1::timestamptz, $2);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- month
@@ -140,7 +140,7 @@ CREATE OR REPLACE FUNCTION gd_month(timestamptz)
 $$
   SELECT DATE_TRUNC('month', $1)::timestamptz;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_month(timestamp)
@@ -148,7 +148,7 @@ CREATE OR REPLACE FUNCTION gd_month(timestamp)
 $$
   SELECT gd_month($1::timestamptz);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- month w/ time zone
@@ -158,7 +158,7 @@ CREATE OR REPLACE FUNCTION gd_month(timestamptz, text)
 $$
   SELECT DATE_TRUNC('month', $1 AT TIME ZONE $2) AT TIME ZONE $2;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_month(timestamp, text)
@@ -166,7 +166,7 @@ CREATE OR REPLACE FUNCTION gd_month(timestamp, text)
 $$
   SELECT gd_month($1::timestamptz, $2);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- year
@@ -176,7 +176,7 @@ CREATE OR REPLACE FUNCTION gd_year(timestamptz)
 $$
   SELECT DATE_TRUNC('year', $1)::timestamptz;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_year(timestamp)
@@ -184,7 +184,7 @@ CREATE OR REPLACE FUNCTION gd_year(timestamp)
 $$
   SELECT gd_year($1::timestamptz);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- year w/ time zone
@@ -194,7 +194,7 @@ CREATE OR REPLACE FUNCTION gd_year(timestamptz, text)
 $$
   SELECT DATE_TRUNC('year', $1 AT TIME ZONE $2) AT TIME ZONE $2;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_year(timestamp, text)
@@ -202,7 +202,7 @@ CREATE OR REPLACE FUNCTION gd_year(timestamp, text)
 $$
   SELECT gd_year($1::timestamptz, $2);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- hour of day
@@ -212,7 +212,7 @@ CREATE OR REPLACE FUNCTION gd_hour_of_day(timestamptz)
 $$
   SELECT EXTRACT(HOUR FROM $1)::integer;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_hour_of_day(timestamp)
@@ -220,7 +220,7 @@ CREATE OR REPLACE FUNCTION gd_hour_of_day(timestamp)
 $$
   SELECT gd_hour_of_day($1::timestamptz);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- hour of day w/ time zone
@@ -230,7 +230,7 @@ CREATE OR REPLACE FUNCTION gd_hour_of_day(timestamptz, text)
 $$
   SELECT EXTRACT(HOUR FROM $1 AT TIME ZONE $2)::integer;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_hour_of_day(timestamp, text)
@@ -238,7 +238,7 @@ CREATE OR REPLACE FUNCTION gd_hour_of_day(timestamp, text)
 $$
   SELECT gd_hour_of_day($1::timestamptz, $2);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- day of week
@@ -248,7 +248,7 @@ CREATE OR REPLACE FUNCTION gd_day_of_week(timestamptz)
 $$
   SELECT EXTRACT(DOW FROM $1)::integer;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_day_of_week(timestamp)
@@ -256,7 +256,7 @@ CREATE OR REPLACE FUNCTION gd_day_of_week(timestamp)
 $$
   SELECT gd_day_of_week($1::timestamptz);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 -- day of week w/ time zone
@@ -266,7 +266,7 @@ CREATE OR REPLACE FUNCTION gd_day_of_week(timestamptz, text)
 $$
   SELECT EXTRACT(DOW FROM $1 AT TIME ZONE $2)::integer;
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
 
 CREATE OR REPLACE FUNCTION gd_day_of_week(timestamp, text)
@@ -274,5 +274,5 @@ CREATE OR REPLACE FUNCTION gd_day_of_week(timestamp, text)
 $$
   SELECT gd_day_of_week($1::timestamptz, $2);
 $$
-  LANGUAGE SQL;
+  LANGUAGE SQL STABLE;
 
