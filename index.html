@@ -36,34 +36,32 @@
 
 <p>The simplest way to group by:</p>
 
-<ul>
+<ul class="task-list">
 <li>day</li>
 <li>week</li>
 <li>month</li>
 <li>day of the week</li>
 <li>hour of the day</li>
 <li>and more (complete list at bottom)</li>
-</ul><p><img class="emoji" title=":tada:" alt=":tada:" src="https://a248.e.akamai.net/assets.github.com/images/icons/emoji/tada.png" height="20" width="20" align="absmiddle"> Time zones supported!! <strong>the best part</strong></p>
+</ul><p><img class="emoji" title=":tada:" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/tada.png" height="20" width="20" align="absmiddle"> Time zones supported!! <strong>the best part</strong></p>
 
-<p><img class="emoji" title=":earth_americas:" alt=":earth_americas:" src="https://a248.e.akamai.net/assets.github.com/images/icons/emoji/earth_americas.png" height="20" width="20" align="absmiddle"> Use it with any programming language <strong>the other best part</strong></p>
+<p><img class="emoji" title=":earth_americas:" alt=":earth_americas:" src="https://assets-cdn.github.com/images/icons/emoji/earth_americas.png" height="20" width="20" align="absmiddle"> Use it with any programming language <strong>the other best part</strong></p>
 
 <p>Supports PostgreSQL and MySQL</p>
 
-      <div class="alert">For Ruby, check out the <a href="https://github.com/ankane/groupdate">groupdate gem</a></div>
-
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a name="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>Groupdate.sql creates SQL functions, which are stored by the database.</p>
 
 <p>You can use these functions with any ORM (or without one).</p>
 
 <h4>
-<a name="sql" class="anchor" href="#sql"><span class="octicon octicon-link"></span></a>SQL</h4>
+<a name="user-content-sql" class="anchor" href="#sql" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL</h4>
 
 <p>Group by day</p>
 
-<div class="highlight"><pre><span class="k">SELECT</span> <span class="n">gd_day</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/Los_Angeles'</span><span class="p">)</span> <span class="k">AS</span> <span class="k">day</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<div class="highlight highlight-sql"><pre><span class="k">SELECT</span> <span class="n">gd_day</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/Los_Angeles'</span><span class="p">)</span> <span class="k">AS</span> <span class="k">day</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
   <span class="k">FROM</span> <span class="n">users</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">day</span><span class="p">;</span>
 <span class="c1">-- result</span>
           <span class="k">day</span>           <span class="o">|</span> <span class="k">count</span>
@@ -75,7 +73,7 @@
 
 <p>Group by week</p>
 
-<div class="highlight"><pre><span class="k">SELECT</span> <span class="n">gd_week</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/Chicago'</span><span class="p">)</span> <span class="k">AS</span> <span class="n">week</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<div class="highlight highlight-sql"><pre><span class="k">SELECT</span> <span class="n">gd_week</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/Chicago'</span><span class="p">)</span> <span class="k">AS</span> <span class="n">week</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
   <span class="k">FROM</span> <span class="n">users</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">week</span><span class="p">;</span>
 <span class="c1">-- result</span>
           <span class="n">week</span>          <span class="o">|</span> <span class="k">count</span>
@@ -87,7 +85,7 @@
 
 <p>Group by day of week</p>
 
-<div class="highlight"><pre><span class="k">SELECT</span> <span class="n">gd_day_of_week</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/New_York'</span><span class="p">)</span> <span class="k">AS</span> <span class="n">day_of_week</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<div class="highlight highlight-sql"><pre><span class="k">SELECT</span> <span class="n">gd_day_of_week</span><span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="s1">'America/New_York'</span><span class="p">)</span> <span class="k">AS</span> <span class="n">day_of_week</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
   <span class="k">FROM</span> <span class="n">orders</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">day_of_week</span><span class="p">;</span>
 <span class="c1">-- result</span>
  <span class="n">day_of_week</span> <span class="o">|</span> <span class="k">count</span>
@@ -104,44 +102,44 @@
 <p><strong>Note:</strong> Weeks start on Sunday.</p>
 
 <h4>
-<a name="language--frameworks" class="anchor" href="#language--frameworks"><span class="octicon octicon-link"></span></a>Language / Frameworks</h4>
+<a name="user-content-language--frameworks" class="anchor" href="#language--frameworks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Language / Frameworks</h4>
 
 <p>Ruby on Rails (activerecord)</p>
 
-<div class="highlight"><pre><span class="no">User</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"gd_day(created_at)"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span>
+<div class="highlight highlight-ruby"><pre><span class="no">User</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"gd_day(created_at)"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span>
 </pre></div>
 
 <p>Django, Node.js, Go, etc</p>
 
-<div class="highlight"><pre><span class="c"># pull requests please :)</span>
+<div class="highlight highlight-python"><pre><span class="c"># pull requests please :)</span>
 </pre></div>
 
 <h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a name="user-content-installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <h4>
-<a name="for-postgresql" class="anchor" href="#for-postgresql"><span class="octicon octicon-link"></span></a>For PostgreSQL</h4>
+<a name="user-content-for-postgresql" class="anchor" href="#for-postgresql" aria-hidden="true"><span class="octicon octicon-link"></span></a>For PostgreSQL</h4>
 
-<div class="highlight"><pre>curl https://raw.github.com/ankane/groupdate.sql/master/postgresql.sql | psql db_name
+<div class="highlight highlight-sh"><pre>curl https://raw.githubusercontent.com/ankane/groupdate.sql/master/postgresql.sql <span class="p">|</span> psql db_name
 </pre></div>
 
 <h4>
-<a name="for-mysql" class="anchor" href="#for-mysql"><span class="octicon octicon-link"></span></a>For MySQL</h4>
+<a name="user-content-for-mysql" class="anchor" href="#for-mysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>For MySQL</h4>
 
-<div class="highlight"><pre>curl https://raw.github.com/ankane/groupdate.sql/master/mysql.sql | mysql db_name
+<div class="highlight highlight-sh"><pre>curl https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql.sql <span class="p">|</span> mysql db_name
 </pre></div>
 
 <p><a href="http://dev.mysql.com/doc/refman/5.6/en/time-zone-support.html">Time zone support</a> must be installed on the server.</p>
 
-<div class="highlight"><pre>mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+<div class="highlight highlight-sh"><pre>mysql_tzinfo_to_sql /usr/share/zoneinfo <span class="p">|</span> mysql -u root mysql
 </pre></div>
 
 <h2>
-<a name="complete-list" class="anchor" href="#complete-list"><span class="octicon octicon-link"></span></a>Complete list</h2>
+<a name="user-content-complete-list" class="anchor" href="#complete-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>Complete list</h2>
 
 <p>All functions are prefixed with <code>gd_</code> to prevent conflicts with MySQL functions.</p>
 
-<ul>
+<ul class="task-list">
 <li>second</li>
 <li>minute</li>
 <li>hour</li>
@@ -154,11 +152,26 @@
 </ul><p>A list of time zones can be found <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">here</a></p>
 
 <h2>
-<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+<a name="user-content-uninstall" class="anchor" href="#uninstall" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uninstall</h2>
+
+<h4>
+<a name="user-content-for-postgresql-1" class="anchor" href="#for-postgresql-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>For PostgreSQL</h4>
+
+<div class="highlight highlight-sh"><pre>curl https://raw.githubusercontent.com/ankane/groupdate.sql/master/uninstall_postgresql.sql <span class="p">|</span> psql db_name
+</pre></div>
+
+<h4>
+<a name="user-content-for-mysql-1" class="anchor" href="#for-mysql-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>For MySQL</h4>
+
+<div class="highlight highlight-sh"><pre>curl https://raw.githubusercontent.com/ankane/groupdate.sql/master/uninstall_mysql.sql <span class="p">|</span> mysql db_name
+</pre></div>
+
+<h2>
+<a name="user-content-contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
 <p>Everyone is encouraged to help improve this project. Here are a few ways you can help:</p>
 
-<ul>
+<ul class="task-list">
 <li><a href="https://github.com/ankane/groupdate.sql/issues">Report bugs</a></li>
 <li>Fix bugs and <a href="https://github.com/ankane/groupdate.sql/pulls">submit pull requests</a>
 </li>
