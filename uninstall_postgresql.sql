@@ -1,3 +1,5 @@
+BEGIN;
+
 DROP FUNCTION IF EXISTS gd_version();
 
 DROP FUNCTION IF EXISTS gd_second(timestamptz);
@@ -38,3 +40,5 @@ DROP FUNCTION IF EXISTS gd_day_of_week(timestamptz);
 DROP FUNCTION IF EXISTS gd_day_of_week(timestamp);
 DROP FUNCTION IF EXISTS gd_day_of_week(timestamptz, text);
 DROP FUNCTION IF EXISTS gd_day_of_week(timestamp, text);
+
+COMMIT;

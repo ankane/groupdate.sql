@@ -1,3 +1,5 @@
+BEGIN;
+
 -- version
 
 CREATE OR REPLACE FUNCTION gd_version()
@@ -276,3 +278,4 @@ $$
 $$
   LANGUAGE SQL STABLE;
 
+COMMIT;
