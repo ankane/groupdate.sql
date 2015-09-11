@@ -84,19 +84,12 @@ Django, Node.js, Go, etc
 
 ## Installation
 
-#### For PostgreSQL
+Run this SQL
 
-```sh
-curl https://raw.githubusercontent.com/ankane/groupdate.sql/master/postgresql.sql | psql db_name
-```
+- [PostgreSQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/postgresql.sql)
+- [MySQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql.sql)
 
-#### For MySQL
-
-```sh
-curl https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql.sql | mysql db_name
-```
-
-[Time zone support](http://dev.mysql.com/doc/refman/5.6/en/time-zone-support.html) must be installed on the server.
+For MySQL, [time zone support](http://dev.mysql.com/doc/refman/5.6/en/time-zone-support.html) must be installed on the server.
 
 ```sh
 mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
@@ -120,17 +113,10 @@ A list of time zones can be found [here](https://en.wikipedia.org/wiki/List_of_t
 
 ## Uninstall
 
-#### For PostgreSQL
+Run this SQL
 
-```sh
-curl https://raw.githubusercontent.com/ankane/groupdate.sql/master/uninstall_postgresql.sql | psql db_name
-```
-
-#### For MySQL
-
-```sh
-curl https://raw.githubusercontent.com/ankane/groupdate.sql/master/uninstall_mysql.sql | mysql db_name
-```
+- [PostgreSQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/uninstall_postgresql.sql)
+- [MySQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/uninstall_mysql.sql)
 
 ## Contributing
 
