@@ -103,7 +103,8 @@ All functions are prefixed with `gd_` to prevent conflicts with MySQL functions.
 - minute
 - hour
 - day
-- week
+- week - starts Sunday
+- week_mon - starts Monday
 - month
 - year
 - hour_of_day

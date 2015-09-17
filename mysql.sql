@@ -77,6 +77,19 @@ $$
 DELIMITER ;
 
 
+-- week starting monday
+
+DROP FUNCTION IF EXISTS gd_week_mon;
+DELIMITER $$
+CREATE FUNCTION gd_week_mon(ts TIMESTAMP, time_zone VARCHAR(255))
+  RETURNS TIMESTAMP
+BEGIN
+  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(ts, INTERVAL (WEEKDAY(CONVERT_TZ(ts, '+00:00', time_zone))) DAY), '+00:00', time_zone), '%Y-%m-%d 00:00:00'), time_zone, '+00:00');
+END;
+$$
+DELIMITER ;
+
+
 -- month
 
 DROP FUNCTION IF EXISTS gd_month;

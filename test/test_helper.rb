@@ -72,6 +72,24 @@ module TestGroupdate
     assert_result_time :gd_week, "2013-03-17 00:00:00 PDT", "2013-03-17 07:00:00", true
   end
 
+  # week monday
+
+  def test_gd_week_mon_end_of_week
+    assert_result_time :gd_week_mon, "2013-03-18 00:00:00 UTC", "2013-03-24 23:59:59"
+  end
+
+  def test_gd_week_mon_start_of_week
+    assert_result_time :gd_week_mon, "2013-03-25 00:00:00 UTC", "2013-03-25 00:00:00"
+  end
+
+  def test_gd_week_mon_end_of_week_with_time_zone
+    assert_result_time :gd_week_mon, "2013-03-04 00:00:00 PST", "2013-03-11 06:59:59", true
+  end
+
+  def test_gd_week_mon_start_of_week_with_time_zone
+    assert_result_time :gd_week_mon, "2013-03-11 00:00:00 PDT", "2013-03-11 07:00:00", true
+  end
+
   # month
 
   def test_gd_month_end_of_month
