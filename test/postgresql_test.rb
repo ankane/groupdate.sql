@@ -13,11 +13,4 @@ class TestPostgresql < Minitest::Test
         conn
       end
   end
-
-  def assert_result(function, expected, time_str, time_zone = false)
-    tz_str = time_zone ? ", 'America/Los_Angeles'" : ""
-    assert_sql expected, "SELECT #{function}('#{time_str}'::timestamp#{tz_str})"
-    assert_sql expected, "SELECT #{function}('#{time_str}'::timestamptz#{tz_str})"
-  end
-
 end
