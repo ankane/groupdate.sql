@@ -1,8 +1,8 @@
 BEGIN;
 
--- f_gday
+-- gday
 
-CREATE OR REPLACE FUNCTION f_gday(date)
+CREATE OR REPLACE FUNCTION gday(date)
   RETURNS date AS
 $$
   SELECT $1;
@@ -10,7 +10,7 @@ $$
   LANGUAGE SQL STABLE;
 
 
-CREATE OR REPLACE FUNCTION f_gday(ts timestamptz, time_zone text)
+CREATE OR REPLACE FUNCTION gday(ts timestamptz, time_zone text)
   RETURNS date AS
 $$
   from datetime import datetime
@@ -20,26 +20,26 @@ $$
 $$ LANGUAGE plpythonu STABLE;
 
 
-CREATE OR REPLACE FUNCTION f_gday(timestamp, text)
+CREATE OR REPLACE FUNCTION gday(timestamp, text)
   RETURNS date AS
 $$
-  SELECT f_gday($1::timestamptz, $2);
+  SELECT gday($1::timestamptz, $2);
 $$
   LANGUAGE SQL STABLE;
 
 
-CREATE OR REPLACE FUNCTION f_gday(timestamptz)
+CREATE OR REPLACE FUNCTION gday(timestamptz)
   RETURNS date AS
 $$
-  SELECT f_gday($1, 'America/Los_Angeles');
+  SELECT gday($1, 'America/Los_Angeles');
 $$
   LANGUAGE SQL STABLE;
 
 
-CREATE OR REPLACE FUNCTION f_gday(timestamp)
+CREATE OR REPLACE FUNCTION gday(timestamp)
   RETURNS date AS
 $$
-  SELECT f_gday($1::timestamptz, 'America/Los_Angeles');
+  SELECT gday($1::timestamptz, 'America/Los_Angeles');
 $$
   LANGUAGE SQL STABLE;
 
