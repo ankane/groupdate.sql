@@ -83,21 +83,21 @@ module TestGroupdate
   # helpers
 
   def assert_date(function, expected, time_str)
-    assert_sql Date.parse(expected), "SELECT #{function}('#{time_str}'::date)"
+    assert_sql Date.parse(expected), "SELECT f_#{function}('#{time_str}'::date)"
   end
 
   def assert_time(function, expected, time_str)
     expected = Date.parse(expected)
-    assert_sql expected, "SELECT #{function}('#{time_str}'::timestamp)"
-    assert_sql expected, "SELECT #{function}('#{time_str}'::timestamptz)"
-    assert_sql expected, "SELECT #{function}('#{time_str}'::timestamp, 'America/Los_Angeles')"
-    assert_sql expected, "SELECT #{function}('#{time_str}'::timestamptz, 'America/Los_Angeles')"
+    assert_sql expected, "SELECT f_#{function}('#{time_str}'::timestamp)"
+    assert_sql expected, "SELECT f_#{function}('#{time_str}'::timestamptz)"
+    assert_sql expected, "SELECT f_#{function}('#{time_str}'::timestamp, 'America/Los_Angeles')"
+    assert_sql expected, "SELECT f_#{function}('#{time_str}'::timestamptz, 'America/Los_Angeles')"
   end
 
   def assert_time_utc(function, expected, time_str)
     expected = Date.parse(expected)
-    assert_sql expected, "SELECT #{function}('#{time_str}'::timestamp, 'Etc/UTC')"
-    assert_sql expected, "SELECT #{function}('#{time_str}'::timestamptz, 'Etc/UTC')"
+    assert_sql expected, "SELECT f_#{function}('#{time_str}'::timestamp, 'Etc/UTC')"
+    assert_sql expected, "SELECT f_#{function}('#{time_str}'::timestamptz, 'Etc/UTC')"
   end
 
   def assert_sql(expected, sql)
