@@ -13,7 +13,7 @@ $$
 CREATE OR REPLACE FUNCTION gday(timestamptz, text)
   RETURNS date AS
 $$
-  SELECT (DATE_TRUNC('day', $1 AT TIME ZONE $2) AT TIME ZONE $2)::date;
+  SELECT DATE_TRUNC('day', $1 AT TIME ZONE $2)::date;
 $$
   LANGUAGE SQL STABLE;
 
@@ -55,7 +55,7 @@ $$
 CREATE OR REPLACE FUNCTION gweek(timestamptz, text)
   RETURNS date AS
 $$
-  SELECT (DATE_TRUNC('week', $1 AT TIME ZONE $2) AT TIME ZONE $2)::date;
+  SELECT DATE_TRUNC('week', $1 AT TIME ZONE $2)::date;
 $$
   LANGUAGE SQL STABLE;
 
@@ -97,7 +97,7 @@ $$
 CREATE OR REPLACE FUNCTION gmonth(timestamptz, text)
   RETURNS date AS
 $$
-  SELECT (DATE_TRUNC('month', $1 AT TIME ZONE $2) AT TIME ZONE $2)::date;
+  SELECT DATE_TRUNC('month', $1 AT TIME ZONE $2)::date;
 $$
   LANGUAGE SQL STABLE;
 
