@@ -10,6 +10,14 @@ $$
   LANGUAGE SQL STABLE;
 
 
+CREATE OR REPLACE FUNCTION gday(date, text)
+  RETURNS date AS
+$$
+  SELECT $1;
+$$
+  LANGUAGE SQL STABLE;
+
+
 CREATE OR REPLACE FUNCTION gday(timestamptz, text)
   RETURNS date AS
 $$
@@ -52,6 +60,14 @@ $$
   LANGUAGE SQL STABLE;
 
 
+CREATE OR REPLACE FUNCTION gweek(date, text)
+  RETURNS date AS
+$$
+  SELECT DATE_TRUNC('week', $1)::date;
+$$
+  LANGUAGE SQL STABLE;
+
+
 CREATE OR REPLACE FUNCTION gweek(timestamptz, text)
   RETURNS date AS
 $$
@@ -87,6 +103,14 @@ $$
 -- month
 
 CREATE OR REPLACE FUNCTION gmonth(date)
+  RETURNS date AS
+$$
+  SELECT DATE_TRUNC('month', $1)::date;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gmonth(date, text)
   RETURNS date AS
 $$
   SELECT DATE_TRUNC('month', $1)::date;

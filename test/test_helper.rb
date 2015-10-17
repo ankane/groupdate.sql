@@ -84,6 +84,7 @@ module TestGroupdate
 
   def assert_date(function, expected, time_str)
     assert_sql Date.parse(expected), "SELECT #{function}('#{time_str}'::date)"
+    assert_sql Date.parse(expected), "SELECT #{function}('#{time_str}'::date, 'America/Los_Angeles')"
   end
 
   def assert_time(function, expected, time_str)
