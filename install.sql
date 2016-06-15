@@ -149,5 +149,107 @@ $$
 $$
   LANGUAGE SQL STABLE;
 
+-- gperiod
+
+CREATE OR REPLACE FUNCTION gperiod(text, timestamp)
+  RETURNS date AS
+$$
+  SELECT CASE
+  WHEN $1 = 'day' THEN
+    gday($2)
+  WHEN $1 = 'week' THEN
+    gweek($2)
+  WHEN $1 = 'month' THEN
+    gmonth($2)
+  ELSE
+    NULL
+  END;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gperiod(text, timestamptz)
+  RETURNS date AS
+$$
+  SELECT CASE
+  WHEN $1 = 'day' THEN
+    gday($2)
+  WHEN $1 = 'week' THEN
+    gweek($2)
+  WHEN $1 = 'month' THEN
+    gmonth($2)
+  ELSE
+    NULL
+  END;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gperiod(text, date)
+  RETURNS date AS
+$$
+  SELECT CASE
+  WHEN $1 = 'day' THEN
+    gday($2)
+  WHEN $1 = 'week' THEN
+    gweek($2)
+  WHEN $1 = 'month' THEN
+    gmonth($2)
+  ELSE
+    NULL
+  END;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gperiod(text, timestamp, text)
+  RETURNS date AS
+$$
+  SELECT CASE
+  WHEN $1 = 'day' THEN
+    gday($2, $3)
+  WHEN $1 = 'week' THEN
+    gweek($2, $3)
+  WHEN $1 = 'month' THEN
+    gmonth($2, $3)
+  ELSE
+    NULL
+  END;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gperiod(text, timestamptz, text)
+  RETURNS date AS
+$$
+  SELECT CASE
+  WHEN $1 = 'day' THEN
+    gday($2, $3)
+  WHEN $1 = 'week' THEN
+    gweek($2, $3)
+  WHEN $1 = 'month' THEN
+    gmonth($2, $3)
+  ELSE
+    NULL
+  END;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gperiod(text, date, text)
+  RETURNS date AS
+$$
+  SELECT CASE
+  WHEN $1 = 'day' THEN
+    gday($2, $3)
+  WHEN $1 = 'week' THEN
+    gweek($2, $3)
+  WHEN $1 = 'month' THEN
+    gmonth($2, $3)
+  ELSE
+    NULL
+  END;
+$$
+  LANGUAGE SQL STABLE;
 
 COMMIT;
