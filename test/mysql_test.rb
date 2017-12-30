@@ -8,7 +8,7 @@ class TestMysql < Minitest::Test
   def conn
     @@conn ||=
       begin
-        Mysql2::Client.new(:host => "localhost", :username => "root", database: "groupdate_test", database_timezone: :utc)
+        Mysql2::Client.new(host: "localhost", username: "root", database: "groupdate_test", database_timezone: :utc)
       end
   end
 
