@@ -1,10 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (5.10.3)
-    mysql2 (0.4.10)
-    pg (0.21.0)
-    rake (12.3.0)
+    minitest (5.11.3)
+    mysql2 (0.5.2)
+    pg (1.0.0)
+    rake (12.3.1)
 
 PLATFORMS
   ruby
@@ -16,4 +16,4 @@ DEPENDENCIES
   rake
 
 BUNDLED WITH
-   1.16.0
+   1.16.2
