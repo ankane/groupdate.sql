@@ -29,7 +29,7 @@ Group by day
 SELECT gd_day(created_at, 'America/Los_Angeles') AS day, COUNT(*) FROM users GROUP BY day;
 -- result
     day     | count
-------------------------+-------
+------------+-------
  2013-04-11 |   145
  2013-04-12 |    65
  2013-04-13 |   293
@@ -41,7 +41,7 @@ Group by week
 SELECT gd_week(created_at, 'America/Chicago') AS week, COUNT(*) FROM users GROUP BY week;
 -- result
     week    | count
-------------------------+-------
+------------+-------
  2013-05-05 |  1327
  2013-05-12 |  3432
  2013-05-19 |   673
