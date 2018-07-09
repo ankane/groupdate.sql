@@ -1,8 +1,8 @@
 ## 2.0.0
 
 - Added `gd_period` function
-- Added support for default time zone and week start in PostgreSQL
-- Added support for dates in PostgreSQL
+- Added support for week start
+- Added support for dates and default time zone in PostgreSQL
 
 Breaking
 
