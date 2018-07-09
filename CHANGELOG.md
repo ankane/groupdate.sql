@@ -1,4 +1,4 @@
-## 2.0.0 [unreleased]
+## 2.0.0
 
 - Added `gd_period` function
 - Added support for default time zone and week start in PostgreSQL
