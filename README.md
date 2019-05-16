@@ -28,6 +28,8 @@ For MySQL, [time zone support](https://dev.mysql.com/doc/refman/5.7/en/time-zone
 mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
 ```
 
+or copy and paste [these statements](https://gist.githubusercontent.com/ankane/1d6b0022173186accbf0/raw/time_zone_support.sql) into a SQL console.
+
 ## Getting Started
 
 Groupdate.sql creates SQL functions, which are stored by the database. You can use these functions with any ORM or without one. Times stored in your database are assumed to be UTC (this is the default for frameworks like Rails).
