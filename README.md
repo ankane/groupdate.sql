@@ -7,21 +7,30 @@ The simplest way to group by:
 - month
 - day of the week
 - hour of the day
-- and more (complete list at bottom)
+- and more
 
 :tada: Time zones supported!!
-
-:earth_americas: Use it with any programming language
 
 Supports PostgreSQL and MySQL
 
 [![Build Status](https://travis-ci.org/ankane/groupdate.sql.svg?branch=master)](https://travis-ci.org/ankane/groupdate.sql)
 
-## Usage
+## Installation
+
+Run this SQL
+
+- [PostgreSQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/postgresql/install.sql)
+- [MySQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql/install.sql)
+
+For MySQL, [time zone support](https://dev.mysql.com/doc/refman/5.7/en/time-zone-support.html) must be installed on the server.
+
+```sh
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+```
+
+## Getting Started
 
 Groupdate.sql creates SQL functions, which are stored by the database. You can use these functions with any ORM or without one. Times stored in your database are assumed to be UTC (this is the default for frameworks like Rails).
-
-### SQL
 
 Group by day
 
@@ -47,22 +56,6 @@ SELECT gd_week(created_at, 'America/Chicago') AS week, COUNT(*) FROM users GROUP
  2013-05-19 |   673
 ```
 
-Group by day of week
-
-```sql
-SELECT gd_day_of_week(created_at, 'America/New_York') AS day_of_week, COUNT(*) FROM orders GROUP BY day_of_week;
--- result
- day_of_week | count
--------------+-------
-           0 |   167
-           1 |   273
-           2 |   439
-           3 |   285
-           4 |   318
-           5 |   123
-           6 |   189
-```
-
 > Weeks start on Sunday by default
 
 Group by dynamic period
@@ -72,6 +65,24 @@ SELECT gd_period('day', created_at, 'America/Los_Angeles') AS period, COUNT(*) F
 ```
 
 > Works with `day`, `week`, `month`, and `year`
+
+## Functions
+
+Here’s the complete list of functions. All are prefixed with `gd_` to prevent conflicts with MySQL functions.
+
+- second
+- minute
+- hour
+- day
+- week
+- month
+- year
+- hour_of_day
+- day_of_week
+
+A list of time zones can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+## Options
 
 ### Time Zone
 
@@ -119,49 +130,6 @@ CREATE FUNCTION gd_week_start()
 
 COMMIT;
 ```
-
-### Language / Frameworks
-
-Ruby on Rails (ActiveRecord)
-
-```ruby
-User.group("gd_day(created_at, 'America/Los_Angeles')").count
-```
-
-Django, Node.js, Go, etc
-
-```python
-# pull requests please :)
-```
-
-## Installation
-
-Run this SQL
-
-- [PostgreSQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/postgresql/install.sql)
-- [MySQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql/install.sql)
-
-For MySQL, [time zone support](https://dev.mysql.com/doc/refman/5.7/en/time-zone-support.html) must be installed on the server.
-
-```sh
-mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
-```
-
-## Complete list
-
-All functions are prefixed with `gd_` to prevent conflicts with MySQL functions.
-
-- second
-- minute
-- hour
-- day
-- week
-- month
-- year
-- hour_of_day
-- day_of_week
-
-A list of time zones can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
 ## Uninstall
 
