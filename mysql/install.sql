@@ -5,7 +5,7 @@ START TRANSACTION;
 DROP FUNCTION IF EXISTS gd_version;
 CREATE FUNCTION gd_version()
   RETURNS VARCHAR(255)
-  RETURN '2.0.0';
+  RETURN '2.0.1';
 
 
 -- default week start

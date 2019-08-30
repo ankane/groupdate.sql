@@ -81,8 +81,8 @@ Here’s the complete list of functions. All are prefixed with `gd_` to prevent 
 - year
 - hour_of_day
 - day_of_week
-- day_of_month [master]
-- month_of_year [master]
+- day_of_month
+- month_of_year
 
 A list of time zones can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
