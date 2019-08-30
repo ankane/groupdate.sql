@@ -1,12 +1,14 @@
+dist: xenial
 language: ruby
-rvm: 2.5.1
-sudo: false
+rvm: 2.6.3
+services:
+  - postgresql
+  - mysql
 script: bundle exec rake test
 before_install:
-  - gem install bundler
-  - mysql -e 'create database groupdatesql_test;'
+  - mysqladmin create groupdatesql_test
   - mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
-  - psql -c 'create database groupdatesql_test;' -U postgres
+  - createdb groupdatesql_test
 notifications:
   email:
     on_success: never
