@@ -88,6 +88,22 @@ CREATE FUNCTION gd_day_of_week(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURN DAYOFWEEK(CONVERT_TZ(ts, '+00:00', time_zone)) - 1;
 
 
+-- day of month
+
+DROP FUNCTION IF EXISTS gd_day_of_month;
+CREATE FUNCTION gd_day_of_month(ts TIMESTAMP, time_zone VARCHAR(255))
+  RETURNS INT
+  RETURN DAYOFMONTH(CONVERT_TZ(ts, '+00:00', time_zone));
+
+
+-- month of year
+
+DROP FUNCTION IF EXISTS gd_month_of_year;
+CREATE FUNCTION gd_month_of_year(ts TIMESTAMP, time_zone VARCHAR(255))
+  RETURNS INT
+  RETURN MONTH(CONVERT_TZ(ts, '+00:00', time_zone));
+
+
 -- period
 
 DROP FUNCTION IF EXISTS gd_period;

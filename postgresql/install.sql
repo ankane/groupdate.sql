@@ -367,6 +367,106 @@ $$
   LANGUAGE SQL STABLE;
 
 
+-- day of month
+
+CREATE OR REPLACE FUNCTION gd_day_of_month(date)
+  RETURNS integer AS
+$$
+  SELECT EXTRACT(DAY FROM $1)::integer;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_day_of_month(date, text)
+  RETURNS integer AS
+$$
+  SELECT gd_day_of_month($1);
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_day_of_month(timestamptz, text)
+  RETURNS integer AS
+$$
+  SELECT EXTRACT(DAY FROM $1 AT TIME ZONE $2)::integer;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_day_of_month(timestamp, text)
+  RETURNS integer AS
+$$
+  SELECT gd_day_of_month($1::timestamptz, $2);
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_day_of_month(timestamptz)
+  RETURNS integer AS
+$$
+  SELECT gd_day_of_month($1, gd_time_zone());
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_day_of_month(timestamp)
+  RETURNS integer AS
+$$
+  SELECT gd_day_of_month($1::timestamptz, gd_time_zone());
+$$
+  LANGUAGE SQL STABLE;
+
+
+-- month of year
+
+CREATE OR REPLACE FUNCTION gd_month_of_year(date)
+  RETURNS integer AS
+$$
+  SELECT EXTRACT(MONTH FROM $1)::integer;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_month_of_year(date, text)
+  RETURNS integer AS
+$$
+  SELECT gd_month_of_year($1);
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_month_of_year(timestamptz, text)
+  RETURNS integer AS
+$$
+  SELECT EXTRACT(MONTH FROM $1 AT TIME ZONE $2)::integer;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_month_of_year(timestamp, text)
+  RETURNS integer AS
+$$
+  SELECT gd_month_of_year($1::timestamptz, $2);
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_month_of_year(timestamptz)
+  RETURNS integer AS
+$$
+  SELECT gd_month_of_year($1, gd_time_zone());
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_month_of_year(timestamp)
+  RETURNS integer AS
+$$
+  SELECT gd_month_of_year($1::timestamptz, gd_time_zone());
+$$
+  LANGUAGE SQL STABLE;
+
+
 -- period
 
 CREATE OR REPLACE FUNCTION gd_period(text, timestamp)

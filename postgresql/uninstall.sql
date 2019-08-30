@@ -58,6 +58,20 @@ DROP FUNCTION IF EXISTS gd_day_of_week(timestamptz, text);
 DROP FUNCTION IF EXISTS gd_day_of_week(timestamp, text);
 DROP FUNCTION IF EXISTS gd_day_of_week(date, text);
 
+DROP FUNCTION IF EXISTS gd_day_of_month(timestamptz);
+DROP FUNCTION IF EXISTS gd_day_of_month(timestamp);
+DROP FUNCTION IF EXISTS gd_day_of_month(date);
+DROP FUNCTION IF EXISTS gd_day_of_month(timestamptz, text);
+DROP FUNCTION IF EXISTS gd_day_of_month(timestamp, text);
+DROP FUNCTION IF EXISTS gd_day_of_month(date, text);
+
+DROP FUNCTION IF EXISTS gd_month_of_year(timestamptz);
+DROP FUNCTION IF EXISTS gd_month_of_year(timestamp);
+DROP FUNCTION IF EXISTS gd_month_of_year(date);
+DROP FUNCTION IF EXISTS gd_month_of_year(timestamptz, text);
+DROP FUNCTION IF EXISTS gd_month_of_year(timestamp, text);
+DROP FUNCTION IF EXISTS gd_month_of_year(date, text);
+
 DROP FUNCTION IF EXISTS gd_period(text, timestamptz);
 DROP FUNCTION IF EXISTS gd_period(text, timestamp);
 DROP FUNCTION IF EXISTS gd_period(text, date);

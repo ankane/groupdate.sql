@@ -210,6 +210,42 @@ module TestGroupdate
     assert_date_time :day_of_week, 3, "2013-01-02 08:00:00", false
   end
 
+  # day of month
+
+  def test_gd_day_of_month_end_of_day
+    assert_date_utc_time :day_of_month, 1, "2013-01-01 23:59:59", false
+  end
+
+  def test_gd_day_of_month_start_of_day
+    assert_date_utc_time :day_of_month, 2, "2013-01-02 00:00:00", false
+  end
+
+  def test_gd_day_of_month_end_of_week_with_time_zone
+    assert_date_time :day_of_month, 1, "2013-01-02 07:59:59", false
+  end
+
+  def test_gd_day_of_month_start_of_week_with_time_zone
+    assert_date_time :day_of_month, 2, "2013-01-02 08:00:00", false
+  end
+
+  # month of year
+
+  def test_gd_month_of_year_time_end_of_month
+    assert_date_time :month_of_year, 5, "2013-06-01 06:59:59", false
+  end
+
+  def test_gd_month_of_year_time_start_of_month
+    assert_date_time :month_of_year, 6, "2013-06-01 07:00:00", false
+  end
+
+  def test_gd_month_of_year_utc_end_of_month
+    assert_date_utc_time :month_of_year, 5, "2013-05-31 23:59:59", false
+  end
+
+  def test_gd_month_of_year_utc_start_of_month
+    assert_date_utc_time :month_of_year, 6, "2013-06-01 00:00:00", false
+  end
+
   # helpers
 
   def assert_sql(expected, sql)
