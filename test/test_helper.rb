@@ -228,6 +228,24 @@ module TestGroupdate
     assert_date_time :day_of_month, 2, "2013-01-02 08:00:00", false
   end
 
+  # day of year
+
+  def test_gd_day_of_year_end_of_day
+    assert_date_utc_time :day_of_year, 1, "2013-01-01 23:59:59", false
+  end
+
+  def test_gd_day_of_year_start_of_day
+    assert_date_utc_time :day_of_year, 2, "2013-01-02 00:00:00", false
+  end
+
+  def test_gd_day_of_year_end_of_week_with_time_zone
+    assert_date_time :day_of_year, 1, "2013-01-02 07:59:59", false
+  end
+
+  def test_gd_day_of_year_start_of_week_with_time_zone
+    assert_date_time :day_of_year, 2, "2013-01-02 08:00:00", false
+  end
+
   # month of year
 
   def test_gd_month_of_year_time_end_of_month

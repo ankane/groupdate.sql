@@ -13,6 +13,7 @@ DROP FUNCTION IF EXISTS gd_year;
 DROP FUNCTION IF EXISTS gd_hour_of_day;
 DROP FUNCTION IF EXISTS gd_day_of_week;
 DROP FUNCTION IF EXISTS gd_day_of_month;
+DROP FUNCTION IF EXISTS gd_day_of_year;
 DROP FUNCTION IF EXISTS gd_month_of_year;
 DROP FUNCTION IF EXISTS gd_period;
 

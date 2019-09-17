@@ -96,6 +96,14 @@ CREATE FUNCTION gd_day_of_month(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURN DAYOFMONTH(CONVERT_TZ(ts, '+00:00', time_zone));
 
 
+-- day of year
+
+DROP FUNCTION IF EXISTS gd_day_of_year;
+CREATE FUNCTION gd_day_of_year(ts TIMESTAMP, time_zone VARCHAR(255))
+  RETURNS INT
+  RETURN DAYOFYEAR(CONVERT_TZ(ts, '+00:00', time_zone));
+
+
 -- month of year
 
 DROP FUNCTION IF EXISTS gd_month_of_year;
