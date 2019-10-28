@@ -1,4 +1,4 @@
-## 2.0.2 [unreleased]
+## 2.0.2
 
 - Added `gd_day_of_year`
 
