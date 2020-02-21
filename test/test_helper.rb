@@ -290,6 +290,12 @@ module TestGroupdate
     assert_date_utc_time :month_of_year, 6, "2013-06-01 00:00:00", false
   end
 
+  # positive UTC offset
+
+  def test_gd_day_positive_offset
+    assert_date_time :day, "2013-05-03", "2013-05-02 23:00:00", true, "Europe/Paris"
+  end
+
   # helpers
 
   def assert_sql(expected, sql)
