@@ -3,15 +3,15 @@
 - Fixed bug with `gd_day`, `gd_week`, `gd_month`, and `gd_year` returning the wrong date for positive UTC offsets in MySQL
 - Added `gd_quarter`
 
-## 2.0.2
+## 2.0.2 (2019-10-28)
 
 - Added `gd_day_of_year`
 
-## 2.0.1
+## 2.0.1 (2019-08-30)
 
 - Added `gd_day_of_month` and `gd_month_of_year`
 
-## 2.0.0
+## 2.0.0 (2018-07-08)
 
 - Added `gd_period` function
 - Added support for week start
