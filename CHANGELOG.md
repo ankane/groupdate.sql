@@ -1,4 +1,4 @@
-## 2.1.0 (unreleased)
+## 2.1.0 (2020-02-20)
 
 - Fixed bug with `gd_day`, `gd_week`, `gd_month`, and `gd_year` returning the wrong date for positive UTC offsets in MySQL
 - Added `gd_quarter`
