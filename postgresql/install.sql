@@ -234,6 +234,56 @@ $$
   LANGUAGE SQL STABLE;
 
 
+-- quarter
+
+CREATE OR REPLACE FUNCTION gd_quarter(date)
+  RETURNS date AS
+$$
+  SELECT DATE_TRUNC('quarter', $1)::date;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_quarter(date, text)
+  RETURNS date AS
+$$
+  SELECT gd_quarter($1);
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_quarter(timestamptz, text)
+  RETURNS date AS
+$$
+  SELECT DATE_TRUNC('quarter', $1 AT TIME ZONE $2)::date;
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_quarter(timestamp, text)
+  RETURNS date AS
+$$
+  SELECT gd_quarter($1::timestamptz, $2);
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_quarter(timestamptz)
+  RETURNS date AS
+$$
+  SELECT gd_quarter($1, gd_time_zone());
+$$
+  LANGUAGE SQL STABLE;
+
+
+CREATE OR REPLACE FUNCTION gd_quarter(timestamp)
+  RETURNS date AS
+$$
+  SELECT gd_quarter($1::timestamptz, gd_time_zone());
+$$
+  LANGUAGE SQL STABLE;
+
+
 -- year
 
 CREATE OR REPLACE FUNCTION gd_year(date)
@@ -529,6 +579,8 @@ $$
     gd_week($2)
   WHEN $1 = 'month' THEN
     gd_month($2)
+  WHEN $1 = 'quarter' THEN
+    gd_quarter($2)
   WHEN $1 = 'year' THEN
     gd_year($2)
   ELSE
@@ -548,6 +600,8 @@ $$
     gd_week($2)
   WHEN $1 = 'month' THEN
     gd_month($2)
+  WHEN $1 = 'quarter' THEN
+    gd_quarter($2)
   WHEN $1 = 'year' THEN
     gd_year($2)
   ELSE
@@ -567,6 +621,8 @@ $$
     gd_week($2)
   WHEN $1 = 'month' THEN
     gd_month($2)
+  WHEN $1 = 'quarter' THEN
+    gd_quarter($2)
   WHEN $1 = 'year' THEN
     gd_year($2)
   ELSE
@@ -586,6 +642,8 @@ $$
     gd_week($2, $3)
   WHEN $1 = 'month' THEN
     gd_month($2, $3)
+  WHEN $1 = 'quarter' THEN
+    gd_quarter($2, $3)
   WHEN $1 = 'year' THEN
     gd_year($2, $3)
   ELSE
@@ -605,6 +663,8 @@ $$
     gd_week($2, $3)
   WHEN $1 = 'month' THEN
     gd_month($2, $3)
+  WHEN $1 = 'quarter' THEN
+    gd_quarter($2, $3)
   WHEN $1 = 'year' THEN
     gd_year($2, $3)
   ELSE
@@ -624,6 +684,8 @@ $$
     gd_week($2, $3)
   WHEN $1 = 'month' THEN
     gd_month($2, $3)
+  WHEN $1 = 'quarter' THEN
+    gd_quarter($2, $3)
   WHEN $1 = 'year' THEN
     gd_year($2, $3)
   ELSE

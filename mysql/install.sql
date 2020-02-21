@@ -64,6 +64,13 @@ CREATE FUNCTION gd_month(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-01 00:00:00'), time_zone, '+00:00');
 
 
+-- quarter
+
+DROP FUNCTION IF EXISTS gd_quarter;
+CREATE FUNCTION gd_quarter(ts TIMESTAMP, time_zone VARCHAR(255))
+  RETURNS DATE
+  RETURN CONVERT_TZ(DATE_FORMAT(DATE(CONCAT(YEAR(CONVERT_TZ(ts, '+00:00', time_zone)), '-', LPAD(1 + 3 * (QUARTER(CONVERT_TZ(ts, '+00:00', time_zone)) - 1), 2, '00'), '-01')), '%Y-%m-%d %H:%i:%S'), time_zone, '+00:00');
+
 -- year
 
 DROP FUNCTION IF EXISTS gd_year;
@@ -124,6 +131,8 @@ CREATE FUNCTION gd_period(period VARCHAR(255), ts TIMESTAMP, time_zone VARCHAR(2
     gd_week(ts, time_zone)
   WHEN period = 'month' THEN
     gd_month(ts, time_zone)
+  WHEN period = 'quarter' THEN
+    gd_quarter(ts, time_zone)
   WHEN period = 'year' THEN
     gd_year(ts, time_zone)
   ELSE

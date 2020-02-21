@@ -1,3 +1,7 @@
+## 2.0.3 (unreleased)
+
+- Added `gd_quarter`
+
 ## 2.0.2
 
 - Added `gd_day_of_year`

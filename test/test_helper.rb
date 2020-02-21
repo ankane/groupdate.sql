@@ -148,6 +148,32 @@ module TestGroupdate
     assert_date_utc_time :month, "2013-06-01", "2013-06-01 00:00:00"
   end
 
+  # quarter
+
+  def test_gd_quarter_date_end_of_quarter
+    assert_date :quarter, "2013-01-01", "2013-03-31"
+  end
+
+  def test_gd_quarter_date_start_of_quarter
+    assert_date :quarter, "2013-04-01", "2013-04-01"
+  end
+
+  def test_gd_quarter_time_end_of_quarter
+    assert_date_time :quarter, "2013-04-01", "2013-07-01 06:59:59"
+  end
+
+  def test_gd_quarter_time_start_of_quarter
+    assert_date_time :quarter, "2013-04-01", "2013-04-01 07:00:00"
+  end
+
+  def test_gd_quarter_utc_end_of_quarter
+    assert_date_utc_time :quarter, "2013-04-01", "2013-06-30 23:59:59"
+  end
+
+  def test_gd_quarter_utc_start_of_quarter
+    assert_date_utc_time :quarter, "2013-04-01", "2013-04-01 00:00:00"
+  end
+
   # year
 
   def test_gd_year_date_end_of_year

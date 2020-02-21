@@ -78,6 +78,7 @@ Here’s the complete list of functions. All are prefixed with `gd_` to prevent 
 - day
 - week
 - month
+- quarter [master]
 - year
 - hour_of_day
 - day_of_week

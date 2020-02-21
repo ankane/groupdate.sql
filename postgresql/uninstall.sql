@@ -39,6 +39,13 @@ DROP FUNCTION IF EXISTS gd_month(timestamptz, text);
 DROP FUNCTION IF EXISTS gd_month(timestamp, text);
 DROP FUNCTION IF EXISTS gd_month(date, text);
 
+DROP FUNCTION IF EXISTS gd_quarter(timestamptz);
+DROP FUNCTION IF EXISTS gd_quarter(timestamp);
+DROP FUNCTION IF EXISTS gd_quarter(date);
+DROP FUNCTION IF EXISTS gd_quarter(timestamptz, text);
+DROP FUNCTION IF EXISTS gd_quarter(timestamp, text);
+DROP FUNCTION IF EXISTS gd_quarter(date, text);
+
 DROP FUNCTION IF EXISTS gd_year(timestamptz);
 DROP FUNCTION IF EXISTS gd_year(timestamp);
 DROP FUNCTION IF EXISTS gd_year(date);
