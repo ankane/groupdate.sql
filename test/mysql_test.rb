@@ -44,19 +44,11 @@ CREATE FUNCTION gd_week_start()
     # nothing to test
   end
 
-  def assert_date_time(function, expected, time_str, period = true)
+  def assert_date_time(function, expected, time_str, period = true, time_zone = "America/Los_Angeles")
     expected = Date.parse(expected) if expected.is_a?(String)
-    assert_sql expected, "SELECT gd_#{function}('#{time_str}', 'America/Los_Angeles')"
+    assert_sql expected, "SELECT gd_#{function}('#{time_str}', '#{time_zone}')"
     if period
-      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}', 'America/Los_Angeles')"
-    end
-  end
-
-  def assert_date_utc_time(function, expected, time_str, period = true)
-    expected = Date.parse(expected) if expected.is_a?(String)
-    assert_sql expected, "SELECT gd_#{function}('#{time_str}', 'Etc/UTC')"
-    if period
-      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}', 'Etc/UTC')"
+      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}', '#{time_zone}')"
     end
   end
 end

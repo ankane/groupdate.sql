@@ -48,27 +48,22 @@ $$
     assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::date, 'America/Los_Angeles')"
   end
 
-  def assert_date_time(function, expected, time_str, period = true)
+  def assert_date_time(function, expected, time_str, period = true, time_zone = "America/Los_Angeles")
     expected = Date.parse(expected) if expected.is_a?(String)
-    assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamp)"
-    assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamptz)"
-    assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamp, 'America/Los_Angeles')"
-    assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamptz, 'America/Los_Angeles')"
+    assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamp, '#{time_zone}')"
+    assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamptz, '#{time_zone}')"
     if period
-      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamp)"
-      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamptz)"
-      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamp, 'America/Los_Angeles')"
-      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamptz, 'America/Los_Angeles')"
+      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamp, '#{time_zone}')"
+      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamptz, '#{time_zone}')"
     end
-  end
 
-  def assert_date_utc_time(function, expected, time_str, period = true)
-    expected = Date.parse(expected) if expected.is_a?(String)
-    assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamp, 'Etc/UTC')"
-    assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamptz, 'Etc/UTC')"
-    if period
-      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamp, 'Etc/UTC')"
-      assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamptz, 'Etc/UTC')"
+    if time_zone == "America/Los_Angeles"
+      assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamp)"
+      assert_sql expected, "SELECT gd_#{function}('#{time_str}'::timestamptz)"
+      if period
+        assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamp)"
+        assert_sql expected, "SELECT gd_period('#{function}', '#{time_str}'::timestamptz)"
+      end
     end
   end
 end

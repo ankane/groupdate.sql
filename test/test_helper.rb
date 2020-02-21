@@ -302,4 +302,8 @@ module TestGroupdate
   ensure
     set_week_start(6)
   end
+
+  def assert_date_utc_time(function, expected, time_str, period = true)
+    assert_date_time(function, expected, time_str, period, "Etc/UTC")
+  end
 end
