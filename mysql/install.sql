@@ -45,7 +45,7 @@ CREATE FUNCTION gd_hour(ts TIMESTAMP, time_zone VARCHAR(255))
 DROP FUNCTION IF EXISTS gd_day;
 CREATE FUNCTION gd_day(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS DATE
-  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-%d 00:00:00'), time_zone, '+00:00');
+  RETURN DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-%d 00:00:00');
 
 
 -- week
@@ -53,7 +53,7 @@ CREATE FUNCTION gd_day(ts TIMESTAMP, time_zone VARCHAR(255))
 DROP FUNCTION IF EXISTS gd_week;
 CREATE FUNCTION gd_week(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS DATE
-  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(ts, INTERVAL ((7 - gd_week_start() + WEEKDAY(CONVERT_TZ(ts, '+00:00', time_zone))) % 7) DAY), '+00:00', time_zone), '%Y-%m-%d 00:00:00'), time_zone, '+00:00');
+  RETURN DATE_FORMAT(CONVERT_TZ(DATE_SUB(ts, INTERVAL ((7 - gd_week_start() + WEEKDAY(CONVERT_TZ(ts, '+00:00', time_zone))) % 7) DAY), '+00:00', time_zone), '%Y-%m-%d 00:00:00');
 
 
 -- month
@@ -61,7 +61,7 @@ CREATE FUNCTION gd_week(ts TIMESTAMP, time_zone VARCHAR(255))
 DROP FUNCTION IF EXISTS gd_month;
 CREATE FUNCTION gd_month(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS DATE
-  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-01 00:00:00'), time_zone, '+00:00');
+  RETURN DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-%m-01 00:00:00');
 
 
 -- quarter
@@ -69,14 +69,14 @@ CREATE FUNCTION gd_month(ts TIMESTAMP, time_zone VARCHAR(255))
 DROP FUNCTION IF EXISTS gd_quarter;
 CREATE FUNCTION gd_quarter(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS DATE
-  RETURN CONVERT_TZ(DATE_FORMAT(DATE(CONCAT(YEAR(CONVERT_TZ(ts, '+00:00', time_zone)), '-', LPAD(1 + 3 * (QUARTER(CONVERT_TZ(ts, '+00:00', time_zone)) - 1), 2, '00'), '-01')), '%Y-%m-%d %H:%i:%S'), time_zone, '+00:00');
+  RETURN DATE_FORMAT(DATE(CONCAT(YEAR(CONVERT_TZ(ts, '+00:00', time_zone)), '-', LPAD(1 + 3 * (QUARTER(CONVERT_TZ(ts, '+00:00', time_zone)) - 1), 2, '00'), '-01')), '%Y-%m-%d %H:%i:%S');
 
 -- year
 
 DROP FUNCTION IF EXISTS gd_year;
 CREATE FUNCTION gd_year(ts TIMESTAMP, time_zone VARCHAR(255))
   RETURNS DATE
-  RETURN CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-01-01 00:00:00'), time_zone, '+00:00');
+  RETURN DATE_FORMAT(CONVERT_TZ(ts, '+00:00', time_zone), '%Y-01-01 00:00:00');
 
 
 -- hour of day
