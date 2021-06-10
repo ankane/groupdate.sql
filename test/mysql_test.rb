@@ -29,7 +29,7 @@ class TestMysql < Minitest::Test
     conn.query <<-SQL
 DROP FUNCTION IF EXISTS gd_week_start;
 CREATE FUNCTION gd_week_start()
-  RETURNS INT
+  RETURNS INT DETERMINISTIC
   RETURN #{week_start};
     SQL
     conn.abandon_results!

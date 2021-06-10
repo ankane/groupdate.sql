@@ -11,9 +11,10 @@ jobs:
         ruby-version: 3.0
         bundler-cache: true
     - uses: ankane/setup-postgres@v1
+      with:
+        database: groupdatesql_test
     - uses: ankane/setup-mysql@v1
-    - run: |
-        mysqladmin create groupdatesql_test
-        mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
-        createdb groupdatesql_test
+      with:
+        database: groupdatesql_test
+    - run: mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
     - run: bundle exec rake test

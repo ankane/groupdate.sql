@@ -1,3 +1,7 @@
+## 2.2.0 (unreleased)
+
+- Marked functions as `DETERMINISTIC` for MySQL
+
 ## 2.1.0 (2020-02-20)
 
 - Fixed bug with `gd_day`, `gd_week`, `gd_month`, and `gd_year` returning the wrong date for positive UTC offsets in MySQL
