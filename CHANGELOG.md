@@ -1,3 +1,7 @@
+## 2.2.1 (unreleased)
+
+- Marked some functions as `NO SQL` instead of `DETERMINISTIC` for MySQL
+
 ## 2.2.0 (2021-06-10)
 
 - Marked functions as `DETERMINISTIC` for MySQL
