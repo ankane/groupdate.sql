@@ -5,7 +5,7 @@ BEGIN;
 CREATE OR REPLACE FUNCTION gd_version()
   RETURNS text AS
 $$
-  SELECT '2.2.0'::text;
+  SELECT '2.2.1'::text;
 $$
   LANGUAGE SQL IMMUTABLE;
 
