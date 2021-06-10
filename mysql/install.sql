@@ -5,7 +5,7 @@ START TRANSACTION;
 DROP FUNCTION IF EXISTS gd_version;
 CREATE FUNCTION gd_version()
   RETURNS VARCHAR(255) DETERMINISTIC
-  RETURN '2.1.0';
+  RETURN '2.2.0';
 
 
 -- default week start
