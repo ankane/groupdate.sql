@@ -30,6 +30,6 @@ Breaking
 - `gd_day`, `gd_week`, `gd_month`, and `gd_year` functions now return dates instead of times
 - Removed `gd_week_mon`
 
-## 1.0.0
+## 1.0.0 (2013-05-21)
 
 - First release
