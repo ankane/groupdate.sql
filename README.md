@@ -129,7 +129,7 @@ START TRANSACTION;
 
 DROP FUNCTION IF EXISTS gd_week_start;
 CREATE FUNCTION gd_week_start()
-  RETURNS INT
+  RETURNS INT DETERMINISTIC
   RETURN 6; -- mon=0, tue=1, wed=2, thu=3, fri=4, sat=5, sun=6
 
 COMMIT;
