@@ -6,38 +6,38 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - postgres: 15
-          mysql: 8
-          os: ubuntu-latest
-        - postgres: 13
-          mariadb: 10.6
-          os: ubuntu-latest
-        - postgres: 10
-          mysql: 5.7
-          os: ubuntu-18.04
+          - postgres: 15
+            mysql: 8
+            os: ubuntu-latest
+          - postgres: 13
+            mariadb: 10.6
+            os: ubuntu-latest
+          - postgres: 10
+            mysql: 5.7
+            os: ubuntu-18.04
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.1
-        bundler-cache: true
-    - uses: ankane/setup-postgres@v1
-      with:
-        postgres-version: ${{ matrix.postgres }}
-        database: groupdatesql_test
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+      - uses: ankane/setup-postgres@v1
+        with:
+          postgres-version: ${{ matrix.postgres }}
+          database: groupdatesql_test
 
-    - if: ${{ matrix.mysql }}
-      uses: ankane/setup-mysql@v1
-      with:
-        mysql-version: ${{ matrix.mysql }}
-        database: groupdatesql_test
+      - if: ${{ matrix.mysql }}
+        uses: ankane/setup-mysql@v1
+        with:
+          mysql-version: ${{ matrix.mysql }}
+          database: groupdatesql_test
 
-    - if: ${{ matrix.mariadb }}
-      uses: ankane/setup-mariadb@v1
-      with:
-        mariadb-version: ${{ matrix.mariadb }}
-        database: groupdatesql_test
+      - if: ${{ matrix.mariadb }}
+        uses: ankane/setup-mariadb@v1
+        with:
+          mariadb-version: ${{ matrix.mariadb }}
+          database: groupdatesql_test
 
-    - run: mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
-    - run: bundle exec rake test
+      - run: mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+      - run: bundle exec rake test
