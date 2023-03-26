@@ -9,12 +9,9 @@ jobs:
           - postgres: 15
             mysql: 8
             os: ubuntu-latest
-          - postgres: 13
-            mariadb: 10.6
+          - postgres: 11
+            mariadb: 10.9
             os: ubuntu-latest
-          - postgres: 10
-            mysql: 5.7
-            os: ubuntu-18.04
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
