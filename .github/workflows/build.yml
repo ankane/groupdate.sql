@@ -6,7 +6,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - postgres: 15
+          - postgres: 16
             mysql: 8
             os: ubuntu-latest
           - postgres: 11
@@ -14,10 +14,10 @@ jobs:
             os: ubuntu-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2
+          ruby-version: 3.3
           bundler-cache: true
       - uses: ankane/setup-postgres@v1
         with:
