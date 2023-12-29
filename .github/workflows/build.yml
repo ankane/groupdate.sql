@@ -10,7 +10,7 @@ jobs:
             mysql: 8
             os: ubuntu-latest
           - postgres: 11
-            mariadb: 10.9
+            mariadb: 10.11
             os: ubuntu-latest
     runs-on: ${{ matrix.os }}
     steps:
