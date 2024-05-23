@@ -13,7 +13,7 @@ The simplest way to group by:
 
 Supports PostgreSQL and MySQL
 
-[![Build Status](https://github.com/ankane/groupdate.sql/workflows/build/badge.svg?branch=master)](https://github.com/ankane/groupdate.sql/actions)
+[![Build Status](https://github.com/ankane/groupdate.sql/actions/workflows/build.yml/badge.svg)](https://github.com/ankane/groupdate.sql/actions)
 
 ## Installation
 
