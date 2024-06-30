@@ -142,6 +142,10 @@ Run this SQL
 - [PostgreSQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/postgresql/uninstall.sql)
 - [MySQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql/uninstall.sql)
 
+## History
+
+View the [changelog](https://github.com/ankane/groupdate.sql/blob/master/CHANGELOG.md)
+
 ## Contributing
 
 Everyone is encouraged to help improve this project. Here are a few ways you can help:
