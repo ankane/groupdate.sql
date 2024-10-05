@@ -5,7 +5,6 @@ require "minitest/pride"
 require "time"
 
 module TestGroupdate
-
   # second
 
   def test_gd_second_end_of_second
