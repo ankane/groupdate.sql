@@ -39,9 +39,9 @@ SELECT gd_day(created_at, 'America/Los_Angeles') AS day, COUNT(*) FROM users GRO
 -- result
     day     | count
 ------------+-------
- 2013-04-11 |   145
- 2013-04-12 |    65
- 2013-04-13 |   293
+ 2025-01-01 |   145
+ 2025-01-02 |    65
+ 2025-01-03 |   293
 ```
 
 Group by week
@@ -51,9 +51,9 @@ SELECT gd_week(created_at, 'America/Chicago') AS week, COUNT(*) FROM users GROUP
 -- result
     week    | count
 ------------+-------
- 2013-05-05 |  1327
- 2013-05-12 |  3432
- 2013-05-19 |   673
+ 2025-01-05 |  1327
+ 2025-01-12 |  3432
+ 2025-01-19 |   673
 ```
 
 > Weeks start on Sunday by default
