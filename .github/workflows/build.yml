@@ -6,18 +6,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - postgres: 16
+          - postgres: 17
             mysql: 8
-            os: ubuntu-latest
-          - postgres: 11
-            mariadb: 10.11
-            os: ubuntu-latest
-    runs-on: ${{ matrix.os }}
+          - postgres: 13
+            mariadb: 11.4
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: 3.4
           bundler-cache: true
       - uses: ankane/setup-postgres@v1
         with:
