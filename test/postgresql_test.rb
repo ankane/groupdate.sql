@@ -11,26 +11,26 @@ class TestPostgresql < Minitest::Test
         conn.query File.read("postgresql/install.sql")
         conn.query "SET time zone 'UTC'"
         conn.type_map_for_results = PG::BasicTypeMapForResults.new(conn)
-        conn.query <<-SQL
-CREATE OR REPLACE FUNCTION gd_time_zone()
-  RETURNS text AS
-$$
-  SELECT 'America/Los_Angeles'::text;
-$$
-  LANGUAGE SQL IMMUTABLE;
+        conn.query <<~SQL
+          CREATE OR REPLACE FUNCTION gd_time_zone()
+            RETURNS text AS
+          $$
+            SELECT 'America/Los_Angeles'::text;
+          $$
+            LANGUAGE SQL IMMUTABLE;
         SQL
         conn
       end
   end
 
   def set_week_start(week_start)
-    conn.query <<-SQL
-CREATE OR REPLACE FUNCTION gd_week_start()
-  RETURNS int AS
-$$
-  SELECT #{week_start};
-$$
-  LANGUAGE SQL IMMUTABLE;
+    conn.query <<~SQL
+      CREATE OR REPLACE FUNCTION gd_week_start()
+        RETURNS int AS
+      $$
+        SELECT #{week_start};
+      $$
+        LANGUAGE SQL IMMUTABLE;
     SQL
   end
 

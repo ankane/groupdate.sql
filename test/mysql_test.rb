@@ -26,11 +26,11 @@ class TestMysql < Minitest::Test
   end
 
   def set_week_start(week_start)
-    conn.query <<-SQL
-DROP FUNCTION IF EXISTS gd_week_start;
-CREATE FUNCTION gd_week_start()
-  RETURNS INT DETERMINISTIC
-  RETURN #{week_start};
+    conn.query <<~SQL
+      DROP FUNCTION IF EXISTS gd_week_start;
+      CREATE FUNCTION gd_week_start()
+        RETURNS INT DETERMINISTIC
+        RETURN #{week_start};
     SQL
     conn.abandon_results!
   end
