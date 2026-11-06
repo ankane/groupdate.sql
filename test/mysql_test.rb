@@ -9,7 +9,6 @@ class TestMysql < Minitest::Test
         conn =
           Mysql2::Client.new(
             host: "localhost",
-            username: "root",
             database: "groupdatesql_test",
             database_timezone: :utc,
             flags: Mysql2::Client::MULTI_STATEMENTS
