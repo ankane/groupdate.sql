@@ -27,12 +27,15 @@ jobs:
         with:
           mysql-version: ${{ matrix.mysql }}
           database: groupdatesql_test
+      - if: ${{ matrix.mysql }}
+        run: mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
 
       - if: ${{ matrix.mariadb }}
         uses: ankane/setup-mariadb@v1
         with:
           mariadb-version: ${{ matrix.mariadb }}
           database: groupdatesql_test
+      - if: ${{ matrix.mariadb }}
+        run: mariadb-tzinfo-to-sql /usr/share/zoneinfo | mariadb -u root mysql
 
-      - run: mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
       - run: bundle exec rake test
