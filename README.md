@@ -22,7 +22,7 @@ Run this SQL
 - [PostgreSQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/postgresql/install.sql)
 - [MySQL and MariaDB](https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql/install.sql)
 
-For MySQL and MariaDB, [time zone support](https://dev.mysql.com/doc/refman/8.0/en/time-zone-support.html) must be installed on the server.
+For MySQL and MariaDB, [time zone support](https://dev.mysql.com/doc/refman/9.7/en/time-zone-support.html) must be installed on the server.
 
 For MySQL, use:
 
