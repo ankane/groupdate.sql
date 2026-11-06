@@ -6,13 +6,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - postgres: 17
-            mysql: 8
+          - postgres: 18
+            mysql: 9.7
           - postgres: 13
-            mariadb: 11.4
+            mariadb: 12.3
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "4.0"
