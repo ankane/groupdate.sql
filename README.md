@@ -11,7 +11,7 @@ The simplest way to group by:
 
 :tada: Time zones supported!!
 
-Supports PostgreSQL and MySQL
+Supports PostgreSQL, MySQL, and MariaDB
 
 [![Build Status](https://github.com/ankane/groupdate.sql/actions/workflows/build.yml/badge.svg)](https://github.com/ankane/groupdate.sql/actions)
 
@@ -20,12 +20,20 @@ Supports PostgreSQL and MySQL
 Run this SQL
 
 - [PostgreSQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/postgresql/install.sql)
-- [MySQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql/install.sql)
+- [MySQL and MariaDB](https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql/install.sql)
 
-For MySQL, [time zone support](https://dev.mysql.com/doc/refman/8.0/en/time-zone-support.html) must be installed on the server.
+For MySQL and MariaDB, [time zone support](https://dev.mysql.com/doc/refman/8.0/en/time-zone-support.html) must be installed on the server.
+
+For MySQL, use:
 
 ```sh
 mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+```
+
+For MariaDB, use:
+
+```sh
+mariadb-tzinfo-to-sql /usr/share/zoneinfo | mariadb -u root mysql
 ```
 
 ## Getting Started
@@ -122,7 +130,7 @@ $$
   LANGUAGE SQL IMMUTABLE;
 ```
 
-For MySQL, run:
+For MySQL and MariaDB, run:
 
 ```sql
 START TRANSACTION;
@@ -140,7 +148,7 @@ COMMIT;
 Run this SQL
 
 - [PostgreSQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/postgresql/uninstall.sql)
-- [MySQL](https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql/uninstall.sql)
+- [MySQL and MariaDB](https://raw.githubusercontent.com/ankane/groupdate.sql/master/mysql/uninstall.sql)
 
 ## History
 
